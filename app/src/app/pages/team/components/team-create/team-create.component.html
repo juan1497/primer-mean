@@ -1,0 +1,39 @@
+
+<p>
+    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+      add Team 
+    </button>
+  </p>
+  <div style="min-height: 120px;">
+    <div class="collapse collapse-horizontal" id="collapseWidthExample">
+      <div class="card card-body" style="width: 300px;">
+        
+      </div>
+    </div>
+  </div>
+<div class="container mt-5">
+    <form (ngSubmit)="onSubmit()" [formGroup]="registerForm">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Nombre</label>
+          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="name">
+          <div *ngIf="!registerForm.get('name')?.valid && (registerForm.get('name')?.dirty)" id="emailHelp" class="form-text">
+            Has introducido mal el nombre</div>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">City</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="city">
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Stadium</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="stadium">
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Fundation</label>
+            <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="fundation">
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <button type="submit" class="btn btn-success" [disabled]="!registerForm.valid">Crear</button>
+    </form>
+</div>

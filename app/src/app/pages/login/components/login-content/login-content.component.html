@@ -1,0 +1,69 @@
+
+    <div class="container mt-5 d-flex justify-content-center">
+        <form (ngSubmit)="login()"[formGroup]="loginForm">
+            <div class="mb-3">
+                <label for="emailLogin" class="form-label">Email</label>
+                <input formControlName="email" type="email" class="form-control" id="emailLogin" aria-describedby="emailHelp">
+                <div *ngIf="!loginForm.get('email')?.valid && (loginForm.get('email')?.dirty)" id="emailHelp" class="form-text" class="alert alert-danger m-1 " role="alert">
+                    Has introducido mal el campo</div>
+            </div>
+            <div class="mb-3">
+                <label for="passwordLogin" class="form-label">Password</label>
+                <input formControlName="password" type="password" class="form-control" id="passwordLogin">
+                <div *ngIf="!loginForm.get('password')?.valid && (loginForm.get('password')?.dirty)" class="form-text" class="alert alert-danger m-1 " role="alert">
+                    Has introducido mal el  campo</div>
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Log In</button>
+        </form>
+
+    </div>
+    <div class="position-relative">
+      <button type="button" class="btn btn-primary mt-5  position-absolute top-50 start-50 translate-middle" data-bs-toggle="modal" data-bs-target="#register">
+        Sig in
+      </button>
+    </div>
+    
+    
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="register" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Register</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form (ngSubmit)="register()"[formGroup]="registerForm">
+                <div class="mb-3">
+                    <label for="nameRegister" class="form-label">Name</label>
+                    <input formControlName="name"Type="text" class="form-control" id="nameRegister" aria-describedby="emailHelp1">
+                    <div class="alert alert-danger" role="alert" *ngIf="!registerForm.get('name')?.valid && (registerForm.get('name')?.dirty)" id="emailHelp1" class="form-text" class="alert alert-danger m-1 " role="alert">
+                        Has introducido mal el campo</div>
+                </div>
+                <div class="mb-3">
+                    <label for="emailRegister" class="form-label">Email</label>
+                    <input formControlName="email" type="email" class="form-control" id="emailRegister" aria-describedby="emailHelp2">
+                    <div class="alert alert-danger" role="alert" *ngIf="!registerForm.get('email')?.valid && (registerForm.get('email')?.dirty)" id="emailHelp2" class="form-text" class="alert alert-danger m-1 " role="alert">
+                        Has introducido mal el campo</div>
+                </div>
+                <div class="mb-3">
+                    <label for="passRegister" class="form-label">Password</label>
+                    <input formControlName="password" type="password" class="form-control" id="passRegister" aria-describedby="emailHelp3">
+                    <div class="alert alert-danger" role="alert" *ngIf="!registerForm.get('password')?.valid && (registerForm.get('password')?.dirty)" id="emailHelp3" class="form-text"class="alert alert-danger m-1 " role="alert">
+                        Has introducido mal el  campo</div>
+                </div>
+                <div class="mb-3">
+                    <label for="repeatPassRegister" class="form-label">Repeat Password</label>
+                    <input formControlName="repeatPassword" type="password" class="form-control" id="repeatPassRegister"  aria-describedby="emailHelp4">
+
+                    <div  *ngIf="registerForm.get('password')?.value!=registerForm.get('repeatPassword')?.value" id="emailHelp4" class="form-text" class="alert alert-danger m-1 " role="alert">
+                            Las contraseñas no coinciden</div>
+                </div>
+                <button type="submit" class="btn btn-primary"data-bs-dismiss="modal" [disabled]="!registerForm.valid" >Log In</button>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
